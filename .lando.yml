@@ -1,0 +1,4 @@
+name: test-laravel-eloquent
+recipe: laravel
+config:
+  webroot: app/public
