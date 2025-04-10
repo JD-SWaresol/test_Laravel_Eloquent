@@ -2,40 +2,29 @@
 
 namespace App\Models;
 
-use Ramsey\Uuid\Uuid;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
     /**
-     * Se puede anular el proceso de generación de UUID para un modelo determinado haciendo 
-     * uso de un metodo 'newUniqueId'.
+     * Los ULID son similares a los UUID; sin embargo, solo tienen 26 caracteres. 
      * 
-     * Ademas de que se puede especificar que columnas deben recibir UUID por medio de un 
-     * metodo llamado 'uniqueIds'.
+     * Al igual que los UUID ordenados, los ULID se pueden ordenar lexicográficamente para una indexación 
+     * eficiente de la base de datos. 
+     * 
+     * Para utilizar ULID, debe usar la Illuminate\Database\Eloquent\Concerns\HasUlidscaracterística en su modelo
+     * 
+     * También debe asegurarse de que el modelo tenga una columna de clave principal equivalente a ULID :
      */
 
+     use HasUlids;
 
-    /**
-    * Generate a new UUID for the model.
-    */
+     // ...
 
-    public function newUniqueId(): string {
-
-        return (string) Uuid::uuid4();
-     
-    }
-
-    /**
-    * Get the columns that should receive a unique identifier.
-    *
-    * @return array<int, string>
-    */
-
-    public function uniqueIds(): array
-    {
-        return ['id', 'discount_code'];
-    }
-    
 }
+
+$article = Article::create(['title' => 'Traveling to Asia']);
+
+$article->id; // "01gd4d3tgrrfqeda94gdbtdk5c"
