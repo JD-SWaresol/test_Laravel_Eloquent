@@ -2,26 +2,40 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Ramsey\Uuid\Uuid;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
     /**
-     * Las Claves UUID son Identificadores Alfanumericos y para poder hacer uso de ellos
-     * necesitamos el paquete 'HasUuids'.
+     * Se puede anular el proceso de generación de UUID para un modelo determinado haciendo 
+     * uso de un metodo 'newUniqueId'.
      * 
-     * Los UUID son mas eficientes para bases de datos indexadas, pues se pueden ordenar 
-     * de forma 'lexicograficamente'.
+     * Ademas de que se puede especificar que columnas deven recibir UUID por medio de un 
+     * metodo llamado 'uniqueIds'.
      */
 
 
-    // Genera un UUID con marca de tiempo inicial que puede almacenarse eficientemente en una columna indexada de la base de datos. 
-    use HasUuids;
+    /**
+    * Generate a new UUID for the model.
+    */
 
-    // ...
+    public function newUniqueId(): string {
+
+        return (string) Uuid::uuid4();
+     
+    }
+
+    /**
+    * Get the columns that should receive a unique identifier.
+    *
+    * @return array<int, string>
+    */
+
+    public function uniqueIds(): array
+    {
+        return ['id', 'discount_code'];
+    }
+    
 }
-
-$article = Article::create(['title' => 'Traveling to Europe']);
-
-$article->id; // "8f8e8478-9035-4d23-b9a7-62f4d2612ce5"
