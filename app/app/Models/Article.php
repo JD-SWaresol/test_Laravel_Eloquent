@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     /**
-     * Los ULID son similares a los UUID; sin embargo, solo tienen 26 caracteres. 
+     * Los ULID son similares a los UUID; sin embargo, solo tienen 26 caracteres (Mientras que UUID tiene 36). 
      * 
      * Al igual que los UUID ordenados, los ULID se pueden ordenar lexicográficamente para una indexación 
      * eficiente de la base de datos. 
