@@ -12,7 +12,7 @@ class Article extends Model
      * Se puede anular el proceso de generación de UUID para un modelo determinado haciendo 
      * uso de un metodo 'newUniqueId'.
      * 
-     * Ademas de que se puede especificar que columnas deven recibir UUID por medio de un 
+     * Ademas de que se puede especificar que columnas deben recibir UUID por medio de un 
      * metodo llamado 'uniqueIds'.
      */
 
