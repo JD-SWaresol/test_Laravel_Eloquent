@@ -7,30 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     /**
-     * The table associated with the model.
+     * 'created_at' y 'update_at' son columnas que se establecen de forma automatica dentro de 
+     * una tabla de base de datos por medio de Eloquent y ademnás este ultimo las gestiona de 
+     * forma automatica.
      * 
-     * The primary key associated with the table.
-     * 
-     * Indicates if the model's ID is auto-incrementing.
-     * 
-     * The data type of the primary key ID.
-     * 
-     * @var string
-     * 
-     * @var bool
-     * 
-     * @var string
+     * Si no necesitamos que Eloquent la gestione de forma automatica definimos: $timestamps = false
      */
 
-     //Especificamos el nombre de la tabla del modelo de forma manual usando $table
-     protected $table = 'my_flights';
+     /**
+      * Indicates if the model should be timestamped.
+      *
+      * @var bool
+      */
 
-     //Definimos una Llave primaria protegida para el modelo usando $primaryKey
-     protected $primaryKey = 'flight_id';
-
-     //Definimos si la Llave primaria que tendrá el modelo no es autoincrementable
-     public $incrementing = false;
-
-     //Definimos si la llave primaria sera de tipo NO Numerica
-     protected $keyType = 'string';
+     // Gestion automatica de Eloquent inactiva
+     public $timestamps = false;
 }
