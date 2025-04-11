@@ -18,6 +18,7 @@ class Flight extends Model
       * Con la propiedad '$dateFormat' podemos personalizar el formato de las marcas de tiempo de un modelo. 
       */
 
+
      /**
       * Indicates if the model should be timestamped.
       *
@@ -32,4 +33,10 @@ class Flight extends Model
 
      //Esta propiedad determnina como almacenar los atributos de fecha en la base de datos, así como su tipo de formato cuando el modelo se serializa en una matriz o JSON.
      protected $dateFormat = 'U';
+
+     
+     // Para personalizar los nombres de las columnas usadas para almacenar las marcas de tiempo se puede definir las siguientes constantes en el modelo:
+     const CREATED_AT = 'creation_date';
+
+     const UPDATED_AT = 'updated_date';
 }
