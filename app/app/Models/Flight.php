@@ -39,4 +39,9 @@ class Flight extends Model
      const CREATED_AT = 'creation_date';
 
      const UPDATED_AT = 'updated_date';
+
+
+     // En caso de que se quieran realizar operaciones en el modelo sin que 'update_at' modifique la marca de tiempo 
+     // del modelo, se puede usar el modelo 'withoutTimestamps'
+     Model::withoutTimestamps(fn () => $post->increment('reads'));
 }
